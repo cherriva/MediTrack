@@ -12,11 +12,15 @@ import {
 } from 'react-native';
 import { insertMedicine } from '../services/medicineService';
 import { uuidv4 } from '../utils/uuid';
+import { useNavigation } from '@react-navigation/native';
+import type { NativeStackNavigationProp } from '@react-navigation/native-stack';
+import type { RootStackParamList } from '../navigation/types';
 
 export default function BuscarMedicamentoScreen() {
   const [busqueda, setBusqueda] = useState('');
   const [resultados, setResultados] = useState<any[]>([]);
   const [cargando, setCargando] = useState(false);
+  const navigation = useNavigation<NativeStackNavigationProp<RootStackParamList>>();
 
   const buscar = async () => {
     if (!busqueda) return;
@@ -72,6 +76,12 @@ export default function BuscarMedicamentoScreen() {
       <TouchableOpacity style={styles.botonBuscar} onPress={buscar}>
         <Text style={styles.botonBuscarTexto}>Buscar</Text>
       </TouchableOpacity>
+      <TouchableOpacity
+        style={styles.botonEscanear}
+        onPress={() => navigation.navigate('ScanBarcode')}
+      >
+        <Text style={styles.botonBuscarTexto}>Escanear código</Text>
+      </TouchableOpacity>
 
       {cargando ? (
         <ActivityIndicator size="large" />
@@ -102,6 +112,12 @@ const styles = StyleSheet.create({
   },
   botonBuscar: {
     backgroundColor: '#007AFF',
+    padding: 12,
+    borderRadius: 6,
+    marginBottom: 20,
+  },
+  botonEscanear: {
+    backgroundColor: '#34C759',
     padding: 12,
     borderRadius: 6,
     marginBottom: 20,

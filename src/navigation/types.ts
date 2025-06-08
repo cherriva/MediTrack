@@ -4,4 +4,5 @@ export type RootStackParamList = {
   MedicineDetail: { id: string };
   BuscarMedicamento: undefined;
   ProgramarToma: { medicineId: string };
+  ScanBarcode: undefined;
 };

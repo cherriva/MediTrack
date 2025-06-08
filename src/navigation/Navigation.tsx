@@ -11,6 +11,7 @@ import AddMedicineScreen from '../screens/AddMedicineScreen';
 import MedicineDetailScreen from '../screens/MedicineDetailScreen';
 import BuscarMedicamentoScreen from '../screens/BuscarMedicamentoScreen';
 import ProgramarTomaScreen from '../screens/ProgramarTomaScreen';
+import ScanBarcodeScreen from '../screens/ScanBarcodeScreen';
 
 
 const Tab = createBottomTabNavigator();
@@ -60,8 +61,9 @@ export default function Navigation() {
         <Stack.Screen name="Tabs" component={Tabs} options={{ headerShown: false }} />
         <Stack.Screen name="AddMedicine" component={AddMedicineScreen} options={{ title: 'Nuevo medicamento' }} />
         <Stack.Screen name="MedicineDetail" component={MedicineDetailScreen} options={{ title: 'Detalle' }} />
-        <Stack.Screen name="BuscarMedicamento" component={BuscarMedicamentoScreen} options={{ title: 'Buscar en CIMA' }} /> 
+        <Stack.Screen name="BuscarMedicamento" component={BuscarMedicamentoScreen} options={{ title: 'Buscar en CIMA' }} />
         <Stack.Screen name="ProgramarToma" component={ProgramarTomaScreen} options={{ title: 'Programar toma' }} />
+        <Stack.Screen name="ScanBarcode" component={ScanBarcodeScreen} options={{ title: 'Escanear código' }} />
       </Stack.Navigator>
     </NavigationContainer>
   );
