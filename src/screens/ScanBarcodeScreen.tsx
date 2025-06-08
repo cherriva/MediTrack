@@ -1,27 +1,36 @@
 import React, { useState, useRef } from 'react';
 import { View, Text, StyleSheet, Alert, Button } from 'react-native';
 import { CameraView, useCameraPermissions } from 'expo-camera';
-import { useIsFocused } from '@react-navigation/native';
+import { useIsFocused, useNavigation } from '@react-navigation/native';
+import type { NativeStackNavigationProp } from '@react-navigation/native-stack';
 import { insertMedicine } from '../services/medicineService';
+import type { RootStackParamList } from '../navigation/types';
 import { uuidv4 } from '../utils/uuid';
 
 export default function ScanBarcodeScreen() {
   const [permission, requestPermission] = useCameraPermissions();
   const [scanned, setScanned] = useState(false);
+  // Flag síncrono para bloquear eventos repetidos
+  const scannedRef = useRef(false);
   const [facing, setFacing] = useState<'front' | 'back'>('back');
   const isFocused = useIsFocused();
+  const navigation = useNavigation<NativeStackNavigationProp<RootStackParamList>>();
   const cameraRef = useRef<React.ElementRef<typeof CameraView> | null>(null);
 
   const handleBarcodeScanned = async ({ data }: { type: string; data: string }) => {
-    if (scanned) return;
-    setScanned(true);
+    if (scannedRef.current) return;          // ← bloqueo inmediato
+    scannedRef.current = true;               // ← marcamos como ya escaneado
+    setScanned(true);                        // ← actualizamos UI
 
-    // Solo EAN13 farmacia española: 84 7000 + CN(6 díg) + control
+    // Regex EAN13 farmacia española
     const pharmaRegex = /^847000(\d{6})\d$/;
     const match = data.match(pharmaRegex);
     if (!match) {
       Alert.alert('Error', 'Formato de EAN13 no válido para presentación farmacéutica', [
-        { text: 'Escanear de nuevo', onPress: () => setScanned(false) }
+        { text: 'Escanear de nuevo', onPress: () => {
+            scannedRef.current = false;
+            setScanned(false);
+        }}
       ]);
       return;
     }
@@ -30,14 +39,11 @@ export default function ScanBarcodeScreen() {
     try {
       const res = await fetch(`https://cima.aemps.es/cima/rest/medicamento?cn=${cn}`);
       if (!res.ok) throw new Error(`CN ${cn} no encontrado`);
-
       const text = await res.text();
       if (!text) throw new Error(`CN ${cn} sin datos`);
-
       const med = JSON.parse(text);
       if (!med.nombre) throw new Error('Respuesta inválida de CIMA');
 
-      // Mostrar opciones al usuario
       const saveMedicine = async () => {
         await insertMedicine({
           id:           uuidv4(),
@@ -53,7 +59,10 @@ export default function ScanBarcodeScreen() {
           leaflet_url:  med.docs?.find((d: any) => d.tipo === 1)?.url ?? null,
         });
         Alert.alert('Guardado', `Se guardó: ${med.nombre}`, [
-          { text: 'OK', onPress: () => setScanned(false) }
+          {
+            text: 'OK',
+            onPress: () => navigation.replace('Tabs'),
+          }
         ]);
       };
 
@@ -61,7 +70,15 @@ export default function ScanBarcodeScreen() {
         'Medicamento encontrado',
         med.nombre,
         [
-          { text: 'Cancelar', style: 'cancel', onPress: () => setScanned(false) },
+          {
+            text: 'Cancelar',
+            style: 'cancel',
+            onPress: () => {
+              scannedRef.current = false;
+              setScanned(false);
+              navigation.goBack();
+            },
+          },
           { text: 'Guardar', onPress: saveMedicine }
         ],
         { cancelable: false }
@@ -73,8 +90,19 @@ export default function ScanBarcodeScreen() {
         'Error',
         e.message || 'Fallo en consulta CIMA',
         [
-          { text: 'Escanear de nuevo', onPress: () => setScanned(false) },
-          { text: 'Cancelar', style: 'cancel', onPress: () => setScanned(false) }
+          { text: 'Escanear de nuevo', onPress: () => {
+              scannedRef.current = false;
+              setScanned(false);
+          }},
+          {
+            text: 'Cancelar',
+            style: 'cancel',
+            onPress: () => {
+              scannedRef.current = false;
+              setScanned(false);
+              navigation.goBack();
+            }
+          }
         ],
         { cancelable: false }
       );
@@ -115,7 +143,13 @@ export default function ScanBarcodeScreen() {
 
       {permission?.granted && scanned && (
         <View style={styles.scanAgain}>
-          <Button title="Escanear de nuevo" onPress={() => setScanned(false)} />
+          <Button
+            title="Escanear de nuevo"
+            onPress={() => {
+              scannedRef.current = false;  // ← desbloqueo ref
+              setScanned(false);           // ← reset estado
+            }}
+          />
         </View>
       )}
     </View>
