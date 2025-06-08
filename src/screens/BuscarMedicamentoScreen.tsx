@@ -65,7 +65,7 @@ export default function BuscarMedicamentoScreen() {
 
   return (
     <View style={styles.container}>
-      <Text style={styles.titulo}>Buscar en la base CIMA</Text>
+      <Text style={styles.titulo}>Busca tu fármaco</Text>
       <TextInput
         style={styles.input}
         placeholder="Ej: ibuprofeno"
@@ -106,24 +106,31 @@ export default function BuscarMedicamentoScreen() {
 
 const styles = StyleSheet.create({
   container: { flex: 1, padding: 20 },
-  titulo: { fontSize: 20, fontWeight: 'bold', marginBottom: 10 },
+  titulo: { fontSize: 22, fontWeight: 'bold', marginBottom: 15, textAlign: 'center' },
   input: {
-    borderWidth: 1, borderColor: '#ccc', padding: 10, borderRadius: 6, marginBottom: 10,
+    borderWidth: 1.5,
+    borderColor: '#007AFF',
+    padding: 12,
+    borderRadius: 8,
+    marginBottom: 15,
   },
   botonBuscar: {
-    backgroundColor: '#007AFF',
-    padding: 12,
-    borderRadius: 6,
-    marginBottom: 20,
+    backgroundColor: '#4C8BF5',
+    paddingVertical: 14,
+    borderRadius: 8,
+    marginBottom: 15,
   },
   botonEscanear: {
     backgroundColor: '#34C759',
-    padding: 12,
-    borderRadius: 6,
+    paddingVertical: 14,
+    borderRadius: 8,
     marginBottom: 20,
   },
   botonBuscarTexto: {
-    color: 'white', textAlign: 'center', fontWeight: 'bold',
+    color: 'white',
+    textAlign: 'center',
+    fontWeight: 'bold',
+    fontSize: 16,
   },
   card: {
     backgroundColor: '#f2f2f2',

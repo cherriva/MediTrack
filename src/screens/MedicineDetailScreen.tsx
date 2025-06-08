@@ -6,6 +6,7 @@ import {
   StyleSheet,
   Button,
   Linking,
+  Image,
 } from 'react-native';
 import { RouteProp, useRoute, useNavigation } from '@react-navigation/native';
 import type { RootStackParamList } from '../navigation/types';
@@ -43,6 +44,9 @@ export default function MedicineDetailScreen() {
   return (
     <View style={styles.container}>
       <Text style={styles.title}>{medicine.name}</Text>
+      {medicine.image_url && (
+        <Image source={{ uri: medicine.image_url }} style={styles.image} />
+      )}
       {medicine.dose && <Text style={styles.text}>💊 Dosis: {medicine.dose}</Text>}
       {medicine.via_admin && <Text style={styles.text}>🧪 Vía: {medicine.via_admin}</Text>}
       {medicine.form && <Text style={styles.text}>🧬 Forma: {medicine.form}</Text>}
@@ -84,6 +88,12 @@ const styles = StyleSheet.create({
   text: {
     fontSize: 16,
     marginBottom: 10,
+  },
+  image: {
+    width: '100%',
+    height: 150,
+    resizeMode: 'contain',
+    marginBottom: 20,
   },
   error: {
     fontSize: 18,

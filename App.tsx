@@ -4,7 +4,7 @@ import { initDatabase } from './src/services/db';
 import { ActionSheetProvider } from '@expo/react-native-action-sheet';
 import * as FileSystem from 'expo-file-system';
 import * as Notifications from 'expo-notifications';
-import { Platform } from 'react-native';
+import { Platform, Alert } from 'react-native';
 import { updateIntakeStatus, updateIntakeTime } from './src/services/intakeService';
 
 Notifications.setNotificationHandler({
@@ -45,26 +45,39 @@ export default function App() {
       const intakeId = r.notification.request.content.data?.intakeId as string | undefined;
       if (!intakeId) return;
 
-      if (r.actionIdentifier === 'POSTPONE') {
-        const newDate = new Date();
-        newDate.setMinutes(newDate.getMinutes() + 15);
-        await updateIntakeTime(intakeId, newDate.toISOString());
-        await Notifications.scheduleNotificationAsync({
-          content: {
-            title: '💊 Hora de tomar tu medicina',
-            body: 'No olvides tu dosis programada.',
-            sound: 'default',
-            categoryIdentifier: 'MEDICINE_ALARM',
-            data: { intakeId },
+      Alert.alert(
+        'Recordatorio',
+        '¿Has tomado la medicación?',
+        [
+          {
+            text: 'Tomada',
+            onPress: () => updateIntakeStatus(intakeId, 'taken'),
           },
-          trigger: {
-            date: newDate,
-            channelId: 'meditrack-channel',
+          {
+            text: 'Posponer',
+            onPress: async () => {
+              const newDate = new Date();
+              newDate.setMinutes(newDate.getMinutes() + 15);
+              await updateIntakeTime(intakeId, newDate.toISOString());
+              await Notifications.scheduleNotificationAsync({
+                content: {
+                  title: '💊 Hora de tomar tu medicina',
+                  body: 'No olvides tu dosis programada.',
+                  sound: 'default',
+                  categoryIdentifier: 'MEDICINE_ALARM',
+                  data: { intakeId },
+                },
+                trigger: { date: newDate, channelId: 'meditrack-channel' },
+              });
+            },
           },
-        });
-      } else if (r.actionIdentifier === 'CANCEL') {
-        await updateIntakeStatus(intakeId, 'cancelled');
-      }
+          {
+            text: 'Cancelar',
+            style: 'destructive',
+            onPress: () => updateIntakeStatus(intakeId, 'cancelled'),
+          },
+        ]
+      );
     });
 
     return () => {
@@ -81,10 +94,7 @@ export default function App() {
       });
     }
 
-    await Notifications.setNotificationCategoryAsync('MEDICINE_ALARM', [
-      { identifier: 'POSTPONE', buttonTitle: 'Posponer' },
-      { identifier: 'CANCEL', buttonTitle: 'Cancelar' },
-    ]);
+    await Notifications.setNotificationCategoryAsync('MEDICINE_ALARM', []);
 
     const { status } = await Notifications.requestPermissionsAsync();
     if (status !== 'granted') {
