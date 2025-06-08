@@ -24,6 +24,7 @@ function Tabs() {
           let icon = 'home';
           if (route.name === 'Library') icon = 'book';
           if (route.name === 'History') icon = 'time';
+          if (route.name === 'BuscarMedicamento') icon = 'search';
           return <Ionicons name={icon as any} size={size} color={color} />;
         },
       })}
@@ -37,6 +38,11 @@ function Tabs() {
         name="Library"
         component={LibraryScreen}
         options={{ title: 'Biblioteca', tabBarLabel: 'Biblioteca' }}
+      />
+      <Tab.Screen
+        name="BuscarMedicamento"
+        component={BuscarMedicamentoScreen}
+        options={{ title: 'Buscar', tabBarLabel: 'Buscar' }}
       />
       <Tab.Screen
         name="History"

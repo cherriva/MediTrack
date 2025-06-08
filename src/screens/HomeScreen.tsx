@@ -169,7 +169,7 @@ function formatTime(iso: string) {
 }
 
 const styles = StyleSheet.create({
-  container: { flex: 1, backgroundColor: '#fff' },
+  container: { flex: 1, backgroundColor: '#00000' },
   modeSwitch: {
     flexDirection: 'row',
     justifyContent: 'space-around',
@@ -192,13 +192,23 @@ const styles = StyleSheet.create({
   },
   group: {
     marginBottom: 10,
+    backgroundColor: '#fff',
+    borderRadius: 8,
+    padding: 8,
   },
   groupTitle: {
     fontWeight: 'bold',
     marginBottom: 4,
+    color: '#007AFF',
   },
   intakeItem: {
     marginLeft: 10,
+    backgroundColor: '#dfe1ed',
+    color: 'black',
+    fontSize: 17,
+    padding: 4,
+    borderRadius: 4,
+    marginBottom: 2,
   },
   fab: {
     position: 'absolute',

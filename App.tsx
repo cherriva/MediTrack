@@ -5,6 +5,7 @@ import { ActionSheetProvider } from '@expo/react-native-action-sheet';
 import * as FileSystem from 'expo-file-system';
 import * as Notifications from 'expo-notifications';
 import { Platform } from 'react-native';
+import { updateIntakeStatus, updateIntakeTime } from './src/services/intakeService';
 
 Notifications.setNotificationHandler({
   handleNotification: async () => ({
@@ -39,6 +40,36 @@ export default function App() {
     };
 
     bootstrap();
+
+    const sub = Notifications.addNotificationResponseReceivedListener(async (r) => {
+      const intakeId = r.notification.request.content.data?.intakeId as string | undefined;
+      if (!intakeId) return;
+
+      if (r.actionIdentifier === 'POSTPONE') {
+        const newDate = new Date();
+        newDate.setMinutes(newDate.getMinutes() + 15);
+        await updateIntakeTime(intakeId, newDate.toISOString());
+        await Notifications.scheduleNotificationAsync({
+          content: {
+            title: '💊 Hora de tomar tu medicina',
+            body: 'No olvides tu dosis programada.',
+            sound: 'default',
+            categoryIdentifier: 'MEDICINE_ALARM',
+            data: { intakeId },
+          },
+          trigger: {
+            date: newDate,
+            channelId: 'meditrack-channel',
+          },
+        });
+      } else if (r.actionIdentifier === 'CANCEL') {
+        await updateIntakeStatus(intakeId, 'cancelled');
+      }
+    });
+
+    return () => {
+      sub.remove();
+    };
   }, []);
 
   const configurarNotificaciones = async () => {
@@ -49,6 +80,11 @@ export default function App() {
         sound: 'default',
       });
     }
+
+    await Notifications.setNotificationCategoryAsync('MEDICINE_ALARM', [
+      { identifier: 'POSTPONE', buttonTitle: 'Posponer' },
+      { identifier: 'CANCEL', buttonTitle: 'Cancelar' },
+    ]);
 
     const { status } = await Notifications.requestPermissionsAsync();
     if (status !== 'granted') {

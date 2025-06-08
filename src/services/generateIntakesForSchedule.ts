@@ -60,39 +60,40 @@ export async function generateIntakesForSchedule(schedule: Schedule): Promise<vo
     throw error;
   }
 
-  // 🔁 Programar notificaciones repetitivas (una por cada día y hora)
-  let notificaciones = 0;
-  for (const dia of diasSemana) {
-    const dayNum = diasPermitidos[dia];
-    if (dayNum === undefined) continue;
+// 📅 Programar una notificación para cada toma generada
+let notificaciones = 0;
+for (const [id, , datetime] of intakes) {
+  const triggerDate = new Date(datetime);
 
-    for (const h of horas) {
-      const [hour, minute] = h.split(':');
+  try {
+    const trigger: Notifications.CalendarTriggerInput = {
+      type: Notifications.SchedulableTriggerInputTypes.CALENDAR,
+      year: triggerDate.getFullYear(),
+      month: triggerDate.getMonth() + 1, // ¡Ojo! Enero = 0 en JS, pero = 1 en CalendarTriggerInput
+      day: triggerDate.getDate(),
+      hour: triggerDate.getHours(),
+      minute: triggerDate.getMinutes(),
+      second: 0,
+      repeats: false,
+    };
 
-      const trigger = {
-        type: 'calendar',
-        repeats: true,
-        weekday: dayNum + 1,
-        hour: Number(hour),
-        minute: Number(minute),
-        second: 0,
-      } as Notifications.CalendarTriggerInput;
+    await Notifications.scheduleNotificationAsync({
+      content: {
+        title: '💊 Hora de tomar tu medicina',
+        body: 'No olvides tu dosis programada.',
+        sound: 'default',
+        categoryIdentifier: 'MEDICINE_ALARM',
+        data: { intakeId: id },
+      },
+      trigger,
+    });
 
-      try {
-        await Notifications.scheduleNotificationAsync({
-          content: {
-            title: '💊 Hora de tomar tu medicina',
-            body: 'No olvides tu dosis programada.',
-            sound: true,
-          },
-          trigger,
-        });
-        notificaciones++;
-      } catch (err) {
-        console.error('❌ Error al programar notificación:', err);
-      }
-    }
+    notificaciones++;
+  } catch (err) {
+    console.error('❌ Error al programar notificación:', err);
   }
+}
 
-  console.log(`🔔 ${notificaciones} notificaciones semanales programadas`);
+console.log(`🔔 ${notificaciones} notificaciones individuales programadas`);
+
 }

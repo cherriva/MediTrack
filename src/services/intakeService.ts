@@ -22,3 +22,25 @@ export async function getIntakesByDateRange(from: string, to: string): Promise<I
   );
   return result;
 }
+
+export interface IntakeStats {
+  medicineId: string;
+  medicineName: string;
+  total: number;
+  taken: number;
+}
+
+export async function getIntakeStats(): Promise<IntakeStats[]> {
+  const db = await getDatabase();
+  const result = await db.getAllAsync<IntakeStats>(
+    `SELECT m.id as medicineId, m.name as medicineName,
+            COUNT(i.id) as total,
+            SUM(CASE WHEN i.status = 'taken' THEN 1 ELSE 0 END) as taken
+     FROM intake i
+     JOIN schedule s ON i.schedule_id = s.id
+     JOIN medicine m ON s.medicineId = m.id
+     GROUP BY m.id
+     ORDER BY m.name`
+  );
+  return result;
+}
