@@ -7,12 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		109F7AF4BC5665B154A509A1 /* PrivacyInfo.xcprivacy in Resources */ = {isa = PBXBuildFile; fileRef = ADDC4CE42F8B9F26F1838E29 /* PrivacyInfo.xcprivacy */; };
 		13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB51A68108700A75B9A /* Images.xcassets */; };
-		205D4F024729FBE06A48D03E /* libPods-MediTrack.a in Frameworks */ = {isa = PBXBuildFile; fileRef = C0EB52C0D5323A5971C0ADE1 /* libPods-MediTrack.a */; };
 		3E461D99554A48A4959DE609 /* SplashScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AA286B85B6C04FC6940260E9 /* SplashScreen.storyboard */; };
-		7EE5C74A016139BBC3FC263B /* ExpoModulesProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A3C681AA96732C71EA50316 /* ExpoModulesProvider.swift */; };
+		54D20C197BD454588D1F4C8C /* PrivacyInfo.xcprivacy in Resources */ = {isa = PBXBuildFile; fileRef = BD15C243D3972AB8EF84FD5C /* PrivacyInfo.xcprivacy */; };
+		707A3E77D3167A7995027D3E /* ExpoModulesProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D5507820EE0110578A268AF /* ExpoModulesProvider.swift */; };
 		BB2F792D24A3F905000567C9 /* Expo.plist in Resources */ = {isa = PBXBuildFile; fileRef = BB2F792C24A3F905000567C9 /* Expo.plist */; };
+		DDEA1F7BC1202ABE91193DA4 /* libPods-MediTrack.a in Frameworks */ = {isa = PBXBuildFile; fileRef = DF2CA01EC11C5F7597D56AB6 /* libPods-MediTrack.a */; };
 		F11748422D0307B40044C1D9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F11748412D0307B40044C1D9 /* AppDelegate.swift */; };
 /* End PBXBuildFile section */
 
@@ -20,13 +20,13 @@
 		13B07F961A680F5B00A75B9A /* MediTrack.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MediTrack.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		13B07FB51A68108700A75B9A /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = MediTrack/Images.xcassets; sourceTree = "<group>"; };
 		13B07FB61A68108700A75B9A /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = MediTrack/Info.plist; sourceTree = "<group>"; };
-		1A3C681AA96732C71EA50316 /* ExpoModulesProvider.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ExpoModulesProvider.swift; path = "Pods/Target Support Files/Pods-MediTrack/ExpoModulesProvider.swift"; sourceTree = "<group>"; };
-		3AFF49E5C6A1B3AB5E9D806E /* Pods-MediTrack.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MediTrack.debug.xcconfig"; path = "Target Support Files/Pods-MediTrack/Pods-MediTrack.debug.xcconfig"; sourceTree = "<group>"; };
-		89612A2B12F65F67579E86FC /* Pods-MediTrack.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MediTrack.release.xcconfig"; path = "Target Support Files/Pods-MediTrack/Pods-MediTrack.release.xcconfig"; sourceTree = "<group>"; };
+		489A6C63A61CA6A7A628CD6C /* Pods-MediTrack.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MediTrack.release.xcconfig"; path = "Target Support Files/Pods-MediTrack/Pods-MediTrack.release.xcconfig"; sourceTree = "<group>"; };
+		5D5507820EE0110578A268AF /* ExpoModulesProvider.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ExpoModulesProvider.swift; path = "Pods/Target Support Files/Pods-MediTrack/ExpoModulesProvider.swift"; sourceTree = "<group>"; };
 		AA286B85B6C04FC6940260E9 /* SplashScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = SplashScreen.storyboard; path = MediTrack/SplashScreen.storyboard; sourceTree = "<group>"; };
-		ADDC4CE42F8B9F26F1838E29 /* PrivacyInfo.xcprivacy */ = {isa = PBXFileReference; includeInIndex = 1; name = PrivacyInfo.xcprivacy; path = MediTrack/PrivacyInfo.xcprivacy; sourceTree = "<group>"; };
 		BB2F792C24A3F905000567C9 /* Expo.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Expo.plist; sourceTree = "<group>"; };
-		C0EB52C0D5323A5971C0ADE1 /* libPods-MediTrack.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-MediTrack.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		BD15C243D3972AB8EF84FD5C /* PrivacyInfo.xcprivacy */ = {isa = PBXFileReference; includeInIndex = 1; name = PrivacyInfo.xcprivacy; path = MediTrack/PrivacyInfo.xcprivacy; sourceTree = "<group>"; };
+		C7D7C94AFED3E4F25B5143D1 /* Pods-MediTrack.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MediTrack.debug.xcconfig"; path = "Target Support Files/Pods-MediTrack/Pods-MediTrack.debug.xcconfig"; sourceTree = "<group>"; };
+		DF2CA01EC11C5F7597D56AB6 /* libPods-MediTrack.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-MediTrack.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		ED297162215061F000B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
 		F11748412D0307B40044C1D9 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AppDelegate.swift; path = MediTrack/AppDelegate.swift; sourceTree = "<group>"; };
 		F11748442D0722820044C1D9 /* MediTrack-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "MediTrack-Bridging-Header.h"; path = "MediTrack/MediTrack-Bridging-Header.h"; sourceTree = "<group>"; };
@@ -37,21 +37,13 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				205D4F024729FBE06A48D03E /* libPods-MediTrack.a in Frameworks */,
+				DDEA1F7BC1202ABE91193DA4 /* libPods-MediTrack.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		0A909BAEC4ED680B96E040FD /* MediTrack */ = {
-			isa = PBXGroup;
-			children = (
-				1A3C681AA96732C71EA50316 /* ExpoModulesProvider.swift */,
-			);
-			name = MediTrack;
-			sourceTree = "<group>";
-		};
 		13B07FAE1A68108700A75B9A /* MediTrack */ = {
 			isa = PBXGroup;
 			children = (
@@ -61,7 +53,7 @@
 				13B07FB51A68108700A75B9A /* Images.xcassets */,
 				13B07FB61A68108700A75B9A /* Info.plist */,
 				AA286B85B6C04FC6940260E9 /* SplashScreen.storyboard */,
-				ADDC4CE42F8B9F26F1838E29 /* PrivacyInfo.xcprivacy */,
+				BD15C243D3972AB8EF84FD5C /* PrivacyInfo.xcprivacy */,
 			);
 			name = MediTrack;
 			sourceTree = "<group>";
@@ -70,19 +62,9 @@
 			isa = PBXGroup;
 			children = (
 				ED297162215061F000B7C4FE /* JavaScriptCore.framework */,
-				C0EB52C0D5323A5971C0ADE1 /* libPods-MediTrack.a */,
+				DF2CA01EC11C5F7597D56AB6 /* libPods-MediTrack.a */,
 			);
 			name = Frameworks;
-			sourceTree = "<group>";
-		};
-		575536BEE51EDC8378E8848C /* Pods */ = {
-			isa = PBXGroup;
-			children = (
-				3AFF49E5C6A1B3AB5E9D806E /* Pods-MediTrack.debug.xcconfig */,
-				89612A2B12F65F67579E86FC /* Pods-MediTrack.release.xcconfig */,
-			);
-			name = Pods;
-			path = Pods;
 			sourceTree = "<group>";
 		};
 		832341AE1AAA6A7D00B99B32 /* Libraries */ = {
@@ -99,8 +81,8 @@
 				832341AE1AAA6A7D00B99B32 /* Libraries */,
 				83CBBA001A601CBA00E9B192 /* Products */,
 				2D16E6871FA4F8E400B85C8A /* Frameworks */,
-				575536BEE51EDC8378E8848C /* Pods */,
-				E17008CB1637A0835945FAB8 /* ExpoModulesProviders */,
+				DD4CA9A4377B88A66D741B26 /* Pods */,
+				DDE901FDECE74FBF40098BA5 /* ExpoModulesProviders */,
 			);
 			indentWidth = 2;
 			sourceTree = "<group>";
@@ -124,10 +106,28 @@
 			path = MediTrack/Supporting;
 			sourceTree = "<group>";
 		};
-		E17008CB1637A0835945FAB8 /* ExpoModulesProviders */ = {
+		BF64B42D004DA51D666A6E38 /* MediTrack */ = {
 			isa = PBXGroup;
 			children = (
-				0A909BAEC4ED680B96E040FD /* MediTrack */,
+				5D5507820EE0110578A268AF /* ExpoModulesProvider.swift */,
+			);
+			name = MediTrack;
+			sourceTree = "<group>";
+		};
+		DD4CA9A4377B88A66D741B26 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				C7D7C94AFED3E4F25B5143D1 /* Pods-MediTrack.debug.xcconfig */,
+				489A6C63A61CA6A7A628CD6C /* Pods-MediTrack.release.xcconfig */,
+			);
+			name = Pods;
+			path = Pods;
+			sourceTree = "<group>";
+		};
+		DDE901FDECE74FBF40098BA5 /* ExpoModulesProviders */ = {
+			isa = PBXGroup;
+			children = (
+				BF64B42D004DA51D666A6E38 /* MediTrack */,
 			);
 			name = ExpoModulesProviders;
 			sourceTree = "<group>";
@@ -140,13 +140,13 @@
 			buildConfigurationList = 13B07F931A680F5B00A75B9A /* Build configuration list for PBXNativeTarget "MediTrack" */;
 			buildPhases = (
 				08A4A3CD28434E44B6B9DE2E /* [CP] Check Pods Manifest.lock */,
-				5B67C219C99305957925DF4E /* [Expo] Configure project */,
+				6330FFF416EFAC69E54B7BC9 /* [Expo] Configure project */,
 				13B07F871A680F5B00A75B9A /* Sources */,
 				13B07F8C1A680F5B00A75B9A /* Frameworks */,
 				13B07F8E1A680F5B00A75B9A /* Resources */,
 				00DD1BFF1BD5951E006B06BC /* Bundle React Native code and images */,
 				800E24972A6A228C8D4807E9 /* [CP] Copy Pods Resources */,
-				B772C8EEE1D803E875EACE6E /* [CP] Embed Pods Frameworks */,
+				2E667C0B7D8F02AEA31E655A /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -196,7 +196,7 @@
 				BB2F792D24A3F905000567C9 /* Expo.plist in Resources */,
 				13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */,
 				3E461D99554A48A4959DE609 /* SplashScreen.storyboard in Resources */,
-				109F7AF4BC5665B154A509A1 /* PrivacyInfo.xcprivacy in Resources */,
+				54D20C197BD454588D1F4C8C /* PrivacyInfo.xcprivacy in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -240,7 +240,25 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
-		5B67C219C99305957925DF4E /* [Expo] Configure project */ = {
+		2E667C0B7D8F02AEA31E655A /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-MediTrack/Pods-MediTrack-frameworks.sh",
+				"${PODS_XCFRAMEWORKS_BUILD_DIR}/hermes-engine/Pre-built/hermes.framework/hermes",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/hermes.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-MediTrack/Pods-MediTrack-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		6330FFF416EFAC69E54B7BC9 /* [Expo] Configure project */ = {
 			isa = PBXShellScriptBuildPhase;
 			alwaysOutOfDate = 1;
 			buildActionMask = 2147483647;
@@ -266,47 +284,37 @@
 			);
 			inputPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-MediTrack/Pods-MediTrack-resources.sh",
+				"${PODS_CONFIGURATION_BUILD_DIR}/EXApplication/ExpoApplication_privacy.bundle",
 				"${PODS_CONFIGURATION_BUILD_DIR}/EXConstants/EXConstants.bundle",
 				"${PODS_CONFIGURATION_BUILD_DIR}/EXConstants/ExpoConstants_privacy.bundle",
+				"${PODS_CONFIGURATION_BUILD_DIR}/EXNotifications/ExpoNotifications_privacy.bundle",
 				"${PODS_CONFIGURATION_BUILD_DIR}/ExpoFileSystem/ExpoFileSystem_privacy.bundle",
 				"${PODS_CONFIGURATION_BUILD_DIR}/RCT-Folly/RCT-Folly_privacy.bundle",
 				"${PODS_CONFIGURATION_BUILD_DIR}/React-Core/React-Core_privacy.bundle",
 				"${PODS_CONFIGURATION_BUILD_DIR}/React-cxxreact/React-cxxreact_privacy.bundle",
 				"${PODS_CONFIGURATION_BUILD_DIR}/boost/boost_privacy.bundle",
+				"${PODS_CONFIGURATION_BUILD_DIR}/expo-dev-launcher/EXDevLauncher.bundle",
+				"${PODS_CONFIGURATION_BUILD_DIR}/expo-dev-menu/EXDevMenu.bundle",
 				"${PODS_CONFIGURATION_BUILD_DIR}/glog/glog_privacy.bundle",
 			);
 			name = "[CP] Copy Pods Resources";
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/ExpoApplication_privacy.bundle",
 				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/EXConstants.bundle",
 				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/ExpoConstants_privacy.bundle",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/ExpoNotifications_privacy.bundle",
 				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/ExpoFileSystem_privacy.bundle",
 				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/RCT-Folly_privacy.bundle",
 				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/React-Core_privacy.bundle",
 				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/React-cxxreact_privacy.bundle",
 				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/boost_privacy.bundle",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/EXDevLauncher.bundle",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/EXDevMenu.bundle",
 				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/glog_privacy.bundle",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-MediTrack/Pods-MediTrack-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		B772C8EEE1D803E875EACE6E /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-MediTrack/Pods-MediTrack-frameworks.sh",
-				"${PODS_XCFRAMEWORKS_BUILD_DIR}/hermes-engine/Pre-built/hermes.framework/hermes",
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputPaths = (
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/hermes.framework",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-MediTrack/Pods-MediTrack-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -317,7 +325,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				F11748422D0307B40044C1D9 /* AppDelegate.swift in Sources */,
-				7EE5C74A016139BBC3FC263B /* ExpoModulesProvider.swift in Sources */,
+				707A3E77D3167A7995027D3E /* ExpoModulesProvider.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -326,7 +334,7 @@
 /* Begin XCBuildConfiguration section */
 		13B07F941A680F5B00A75B9A /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 3AFF49E5C6A1B3AB5E9D806E /* Pods-MediTrack.debug.xcconfig */;
+			baseConfigurationReference = C7D7C94AFED3E4F25B5143D1 /* Pods-MediTrack.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
@@ -351,7 +359,7 @@
 				);
 				OTHER_SWIFT_FLAGS = "$(inherited) -D EXPO_CONFIGURATION_DEBUG";
 				PRODUCT_BUNDLE_IDENTIFIER = com.anonymous.meditrack;
-				PRODUCT_NAME = MediTrack;
+				PRODUCT_NAME = "MediTrack";
 				SWIFT_OBJC_BRIDGING_HEADER = "MediTrack/MediTrack-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
@@ -362,7 +370,7 @@
 		};
 		13B07F951A680F5B00A75B9A /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 89612A2B12F65F67579E86FC /* Pods-MediTrack.release.xcconfig */;
+			baseConfigurationReference = 489A6C63A61CA6A7A628CD6C /* Pods-MediTrack.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
@@ -382,7 +390,7 @@
 				);
 				OTHER_SWIFT_FLAGS = "$(inherited) -D EXPO_CONFIGURATION_RELEASE";
 				PRODUCT_BUNDLE_IDENTIFIER = com.anonymous.meditrack;
-				PRODUCT_NAME = MediTrack;
+				PRODUCT_NAME = "MediTrack";
 				SWIFT_OBJC_BRIDGING_HEADER = "MediTrack/MediTrack-Bridging-Header.h";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";

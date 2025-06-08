@@ -1,13 +1,14 @@
 import { getDatabase } from './db';
 import type { Schedule } from './scheduleService';
 import { uuidv4 } from '../utils/uuid';
+import * as Notifications from 'expo-notifications';
 
 export async function generateIntakesForSchedule(schedule: Schedule): Promise<void> {
   const db = await getDatabase();
 
   const start = new Date(schedule.fromDate);
   const end = schedule.toDate ? new Date(schedule.toDate) : new Date();
-  end.setMonth(end.getMonth() + 1); // por defecto 1 mes
+  end.setMonth(end.getMonth() + 1);
 
   const diasSemana = (schedule.daysOfWeek ?? '').split(',');
   const horas: string[] = JSON.parse(schedule.times);
@@ -53,10 +54,45 @@ export async function generateIntakesForSchedule(schedule: Schedule): Promise<vo
     for (const intake of intakes) {
       await db.runAsync(insertQuery, intake);
     }
-
     console.log(`✅ Se generaron ${intakes.length} tomas (intakes)`);
   } catch (error) {
     console.error('❌ Error al insertar intakes:', error);
     throw error;
   }
+
+  // 🔁 Programar notificaciones repetitivas (una por cada día y hora)
+  let notificaciones = 0;
+  for (const dia of diasSemana) {
+    const dayNum = diasPermitidos[dia];
+    if (dayNum === undefined) continue;
+
+    for (const h of horas) {
+      const [hour, minute] = h.split(':');
+
+      const trigger = {
+        type: 'calendar',
+        repeats: true,
+        weekday: dayNum + 1,
+        hour: Number(hour),
+        minute: Number(minute),
+        second: 0,
+      } as Notifications.CalendarTriggerInput;
+
+      try {
+        await Notifications.scheduleNotificationAsync({
+          content: {
+            title: '💊 Hora de tomar tu medicina',
+            body: 'No olvides tu dosis programada.',
+            sound: true,
+          },
+          trigger,
+        });
+        notificaciones++;
+      } catch (err) {
+        console.error('❌ Error al programar notificación:', err);
+      }
+    }
+  }
+
+  console.log(`🔔 ${notificaciones} notificaciones semanales programadas`);
 }
